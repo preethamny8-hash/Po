@@ -1,0 +1,789 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Preetham NY - Student, curious builder and beginner web developer from Karnataka.">
+
+<title>Preetham NY | Portfolio</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #080808;
+    --surface: #141414;
+    --orange: #ff6500;
+    --gold: #ffae42;
+    --white: #f5f5f5;
+    --muted: #999;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+.background-glow {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at 15% 20%,
+        rgba(255,80,0,.13), transparent 40%),
+        radial-gradient(ellipse at 85% 65%,
+        rgba(255,120,0,.10), transparent 40%),
+        #080808;
+}
+
+#embers {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.ember {
+    position: absolute;
+    bottom: -20px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--orange);
+    box-shadow: 0 0 12px var(--orange);
+    opacity: 0;
+    animation: rise linear infinite;
+}
+
+@keyframes rise {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    15% { opacity: .8; }
+    85% { opacity: .5; }
+    100% {
+        transform: translateY(-110vh) translateX(50px);
+        opacity: 0;
+    }
+}
+
+/* NAVBAR */
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(8,8,8,.88);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid #302016;
+}
+
+nav {
+    max-width: 1150px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--orange);
+    letter-spacing: 1px;
+}
+
+.logo span { color: white; }
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.nav-links a:hover { color: var(--orange); }
+
+.menu-btn {
+    display: none;
+    color: white;
+    background: none;
+    font-size: 25px;
+}
+
+/* GENERAL */
+
+section {
+    max-width: 1150px;
+    margin: auto;
+    padding: 100px 25px;
+}
+
+.section-title {
+    font-size: 34px;
+    margin-bottom: 35px;
+}
+
+.section-title span { color: var(--orange); }
+
+.orange-line {
+    width: 55px;
+    height: 4px;
+    border-radius: 5px;
+    background: var(--orange);
+    margin-top: 12px;
+    box-shadow: 0 0 15px var(--orange);
+}
+
+/* HERO */
+
+#home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 130px;
+}
+
+.hero-content { max-width: 760px; }
+
+.eyebrow {
+    display: inline-block;
+    color: var(--gold);
+    border: 1px solid #65320f;
+    background: rgba(255,100,0,.07);
+    padding: 9px 15px;
+    border-radius: 30px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(43px, 8vw, 82px);
+    line-height: 1.08;
+    font-weight: 900;
+}
+
+.hero h1 span {
+    color: var(--orange);
+    text-shadow: 0 0 35px rgba(255,90,0,.3);
+}
+
+.hero h2 {
+    color: #aaa;
+    font-size: clamp(18px, 3vw, 25px);
+    margin-top: 20px;
+    font-weight: 400;
+}
+
+.hero p {
+    max-width: 600px;
+    color: var(--muted);
+    line-height: 1.9;
+    margin-top: 22px;
+    font-size: 15px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 32px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 23px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg,#ff5100,#ff9a00);
+    color: white;
+    box-shadow: 0 0 20px rgba(255,90,0,.2);
+}
+
+.btn-outline {
+    border: 1px solid #693515;
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 25px rgba(255,90,0,.3);
+}
+
+/* ABOUT */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 25px;
+}
+
+.panel {
+    background: rgba(22,22,22,.85);
+    border: 1px solid #30251e;
+    border-radius: 15px;
+    padding: 28px;
+    transition: .3s;
+}
+
+.panel:hover {
+    border-color: #a84a17;
+    transform: translateY(-4px);
+}
+
+.panel h3 {
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+
+.panel p {
+    color: #aaa;
+    line-height: 1.9;
+    font-size: 14px;
+}
+
+.info-list { list-style: none; }
+
+.info-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #292929;
+    color: #aaa;
+    font-size: 14px;
+}
+
+.info-list strong { color: white; }
+
+/* SKILLS */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 16px;
+}
+
+.skill {
+    background: var(--surface);
+    padding: 23px;
+    border: 1px solid #30251e;
+    border-radius: 12px;
+    text-align: center;
+    transition: .3s;
+}
+
+.skill:hover {
+    border-color: var(--orange);
+    box-shadow: 0 0 20px rgba(255,90,0,.1);
+    transform: translateY(-5px);
+}
+
+.skill .symbol {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.skill h3 { font-size: 16px; }
+
+.skill p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+/* PROJECTS */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
+
+.project {
+    background: var(--surface);
+    border: 1px solid #30251e;
+    border-radius: 15px;
+    padding: 25px;
+    transition: .3s;
+}
+
+.project:hover {
+    transform: translateY(-6px);
+    border-color: var(--orange);
+}
+
+.project-icon {
+    font-size: 35px;
+    margin-bottom: 18px;
+}
+
+.project h3 {
+    color: var(--gold);
+    margin-bottom: 12px;
+}
+
+.project p {
+    color: #aaa;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+.project a {
+    display: inline-block;
+    margin-top: 18px;
+    color: var(--orange);
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.project a:hover { color: var(--gold); }
+
+/* CONTACT */
+
+.contact-box {
+    text-align: center;
+    background: linear-gradient(135deg,#211007,#151515);
+    border: 1px solid #643214;
+    padding: 45px 20px;
+    border-radius: 18px;
+}
+
+.contact-box h2 { font-size: 30px; }
+
+.contact-box p {
+    color: #aaa;
+    margin: 17px 0 25px;
+    line-height: 1.8;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 13px;
+    flex-wrap: wrap;
+}
+
+.socials a {
+    padding: 12px 18px;
+    border: 1px solid #643214;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    transition: .3s;
+}
+
+.socials a:hover {
+    background: var(--orange);
+    border-color: var(--orange);
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    border-top: 1px solid #302016;
+    padding: 30px 15px;
+    color: #777;
+    font-size: 13px;
+    line-height: 2;
+}
+
+footer strong { color: var(--orange); }
+
+/* SCROLL ANIMATION */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: .7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+    .menu-btn { display: block; }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: #111;
+        flex-direction: column;
+        gap: 22px;
+        border-bottom: 1px solid #472512;
+    }
+
+    .nav-links.show { display: flex; }
+
+    section { padding: 80px 20px; }
+
+    #home { min-height: 90vh; }
+
+    .about-grid,
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .section-title { font-size: 29px; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background-glow"></div>
+<div id="embers"></div>
+
+<header>
+<nav>
+    <div class="logo">PREETHAM NY<span></span></div>
+
+    <button class="menu-btn" id="menuBtn"
+    aria-label="Toggle navigation" aria-expanded="false"
+    type="button">☰</button>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section id="home" class="hero">
+<div class="hero-content">
+
+    <div class="eyebrow">🔥 CURIOUS BUILDER FROM KARNATAKA</div>
+
+    <h1>
+        PREETHAM NY<br>
+        <span></span>
+    </h1>
+
+    <h2>Student | Beginner Web Developer</h2>
+
+    <p>
+        Hello! I am a student from Karnataka interested in
+        technology, coding and building useful digital projects.
+        I enjoy learning new things and turning ideas into
+        simple working projects.
+    </p>
+
+    <div class="buttons">
+        <a href="#projects" class="btn btn-primary">
+            Explore My Projects →
+        </a>
+
+        <a href="#contact" class="btn btn-outline">
+            Contact Me
+        </a>
+    </div>
+
+</div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+    <h2 class="section-title reveal">
+        About <span>Me</span>
+        <div class="orange-line"></div>
+    </h2>
+
+    <div class="about-grid">
+
+        <div class="panel reveal">
+            <h3>Who Am I?</h3>
+            <p>
+                I am a student who enjoys exploring technology
+                and learning programming. I am currently
+                developing my skills in web development and
+                experimenting with small projects.
+                <br><br>
+                My goal is to improve step by step, gain practical
+                experience and build useful applications.
+            </p>
+        </div>
+
+        <div class="panel reveal">
+            <h3>Personal Details</h3>
+            <ul class="info-list">
+                <li><strong>Name:</strong> Preetham NY</li>
+                <li><strong>Location:</strong> Karnataka, India</li>
+                
+                <li><strong>Interest:</strong> Technology & Coding</li>
+                <li><strong>Role:</strong> Student & Learner</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+    <h2 class="section-title reveal">
+        My <span>Skills</span>
+        <div class="orange-line"></div>
+    </h2>
+
+    <div class="skills-grid">
+
+        <div class="skill reveal">
+            <div class="symbol">🌐</div>
+            <h3>HTML</h3>
+            <p>Learning web structure</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="symbol">🎨</div>
+            <h3>CSS</h3>
+            <p>Learning web design</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="symbol">⚡</div>
+            <h3>JavaScript</h3>
+            <p>Learning programming</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="symbol">🐍</div>
+            <h3>Python</h3>
+            <p>Beginner programming</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="symbol">📱</div>
+            <h3>App Development</h3>
+            <p>Exploring app creation</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="symbol">🔧</div>
+            <h3>Arduino</h3>
+            <p>Basic electronics projects</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+    <h2 class="section-title reveal">
+        My <span>Projects</span>
+        <div class="orange-line"></div>
+    </h2>
+
+    <div class="projects-grid">
+
+        <div class="project reveal">
+            <div class="project-icon">🔥</div>
+            <h3>Fire Box</h3>
+            <p>
+                A simple web application designed for web searching
+                and saving personal notes, with a dark orange theme.
+            </p>
+            <a href="https://firebox-discovery-trail.lovable.app"
+               target="_blank" rel="noopener">
+                View Project ↗
+            </a>
+        </div>
+
+        <div class="project reveal">
+            <div class="project-icon">💻</div>
+            <h3>Personal Portfolio</h3>
+            <p>
+                My personal website created to introduce myself,
+                display my learning journey and showcase projects.
+            </p>
+        </div>
+
+        <div class="project reveal">
+            <div class="project-icon">📡</div>
+            <h3>Ultrasonic Alert System</h3>
+            <p>
+                An Arduino project using an ultrasonic sensor
+                and buzzer to detect nearby objects.
+            </p>
+        </div>
+
+        <div class="project reveal">
+            <div class="project-icon">📱</div>
+            <h3>App Development</h3>
+            <p>
+                Fire Box is a mobile application developed
+                with web search and personal note-saving
+                features, designed with a modern interface.
+            </p>
+            <a href="Firebox.apk" download>
+                Download App ↓
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+    <div class="contact-box reveal">
+        <h2>Let's <span style="color:#ff6500">Connect</span></h2>
+
+        <p>
+            Interested in technology, coding or projects?
+            Find me through my social profile.
+        </p>
+
+        <div class="socials">
+            <a href="https://instagram.com/preethu__888"
+               target="_blank" rel="noopener">
+                Instagram ↗
+            </a>
+
+            <a href="https://github.com/"
+               target="_blank" rel="noopener">
+                GitHub ↗
+            </a>
+
+            <a href="preethmpreethu2010@gmail.com">
+                Email
+            </a>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <strong>PREETHAM NY</strong>
+    <p>Curious Builder | Karnataka, India</p>
+    <p>Designed with 🔥 and curiosity.</p>
+    <p>© <span id="year"></span> Preetham NY</p>
+</footer>
+
+<script>
+
+// MOBILE NAVIGATION
+
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+    const opened = navLinks.classList.toggle("show");
+    menuBtn.setAttribute("aria-expanded", opened);
+    menuBtn.textContent = opened ? "✕" : "☰";
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("show");
+        menuBtn.textContent = "☰";
+        menuBtn.setAttribute("aria-expanded", "false");
+    });
+});
+
+// ANIMATED FIRE EMBERS
+
+const emberContainer = document.getElementById("embers");
+
+for (let i = 0; i < 35; i++) {
+    const ember = document.createElement("div");
+    ember.className = "ember";
+
+    ember.style.left = Math.random() * 100 + "%";
+    ember.style.animationDuration =
+        (7 + Math.random() * 10) + "s";
+
+    ember.style.animationDelay =
+        (Math.random() * 12) + "s";
+
+    const size = 2 + Math.random() * 4;
+    ember.style.width = size + "px";
+    ember.style.height = size + "px";
+
+    emberContainer.appendChild(ember);
+}
+
+// SCROLL REVEAL
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(el => {
+    observer.observe(el);
+});
+
+// CURRENT YEAR
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+</script>
+
+</body>
+</html>
